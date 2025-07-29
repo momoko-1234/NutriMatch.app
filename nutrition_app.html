@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>營養知識圖譜轉譯器</title>
+    <link rel="stylesheet" href="nutrition_app.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="nutrition_app.js" defer></script>
+</head>
+<body>
+    <div class="loading-overlay">
+        <div class="loader"></div>
+    </div>
+    <div class="container">
+        <div class="header">
+            <h1>營養知識圖譜轉譯器</h1>
+        </div>
+        
+        <div class="user-info">
+            <h2>你的個人化營養摘要</h2>
+            <div class="user-info-grid">
+                <div class="user-info-item">
+                    <span class="user-info-label">年齡：</span>28歲
+                </div>
+                <div class="user-info-item">
+                    <span class="user-info-label">性別：</span>女
+                </div>
+                <div class="user-info-item">
+                    <span class="user-info-label">BMI：</span>22.1
+                </div>
+                <div class="user-info-item">
+                    <span class="user-info-label">健康族群：</span>亞健康
+                </div>
+            </div>
+            <div class="special-status">
+                <div class="user-info-item">
+                    <span class="user-info-label">特殊狀態：</span>常熬夜、嘴破、易疲勞
+                </div>
+                <div class="user-info-item">
+                    <span class="user-info-label">健康紀錄：</span>腎臟輕度異常
+                </div>
+            </div>
+        </div>
+        
+        <div class="section nutrition-summary">
+            <h2>📊 個人營養摘要說明</h2>
+            <div class="summary-content">
+                <p>根據您的健康數據分析，您屬於<span class="highlight">亞健康族群</span>，主要表現為睡眠不足、免疫力下降和能量不足。您的BMI指數在正常範圍內，但需要注意以下幾點：</p>
+                <ul class="summary-points">
+                    <li>長期熬夜導致的生理時鐘紊亂</li>
+                    <li>口腔黏膜健康需要改善</li>
+                    <li>腎臟功能需要特別關注</li>
+                    <li>能量代謝效率有待提升</li>
+                </ul>
+                <p>我們的營養建議將針對這些問題，幫助您恢復健康狀態，提升生活品質。</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>🌱 推薦營養素清單</h2>
+            <ul class="nutrition-list">
+                <li class="nutrition-item">
+                    <div class="nutrition-icon">🍃</div>
+                    <div>
+                        <div class="nutrition-name">維生素B群</div>
+                        <div class="nutrition-benefit">幫助能量代謝，改善疲勞感</div>
+                    </div>
+                </li>
+                <li class="nutrition-item">
+                    <div class="nutrition-icon">🍊</div>
+                    <div>
+                        <div class="nutrition-name">維生素C</div>
+                        <div class="nutrition-benefit">促進口腔黏膜修復，增強免疫力</div>
+                    </div>
+                </li>
+                <li class="nutrition-item">
+                    <div class="nutrition-icon">🌞</div>
+                    <div>
+                        <div class="nutrition-name">維生素D</div>
+                        <div class="nutrition-benefit">幫助鈣質吸收，支持免疫系統</div>
+                    </div>
+                </li>
+                <li class="nutrition-item">
+                    <div class="nutrition-icon">🌿</div>
+                    <div>
+                        <div class="nutrition-name">褪黑激素</div>
+                        <div class="nutrition-benefit">改善睡眠品質，調節生理時鐘</div>
+                    </div>
+                </li>
+                <li class="nutrition-item">
+                    <div class="nutrition-icon">🍯</div>
+                    <div>
+                        <div class="nutrition-name">益生菌</div>
+                        <div class="nutrition-benefit">增強腸道健康，提升免疫力</div>
+                    </div>
+                </li>
+            </ul>
+            
+            <a href="#" class="detail-button">[查看詳情]</a>
+        </div>
+        
+        <div class="section">
+            <h2>健康目標</h2>
+            <div class="health-goals">
+                <div class="goal-tag">#睡眠品質</div>
+                <div class="goal-tag">#免疫力提升</div>
+                <div class="goal-tag">#抗疲勞</div>
+            </div>
+        </div>
+        
+        <div class="section nutrition-radar">
+            <h2>🎯 個人化營養素推薦系統</h2>
+            <div class="radar-description">
+                <p>以下雷達圖展示了您的基礎需求與健康目標的雙軸分析結果，幫助您了解各營養素的重要性：</p>
+            </div>
+            <div class="radar-chart-container">
+                <canvas id="nutritionRadarChart"></canvas>
+            </div>
+            <div class="radar-legend">
+                <div class="legend-item">
+                    <span class="legend-color" style="background-color: rgba(187, 255, 228, 0.6)"></span>
+                    <span class="legend-text">基礎需求</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color" style="background-color: rgba(44, 122, 100, 0.6)"></span>
+                    <span class="legend-text">健康目標</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section lifestyle-advice">
+            <h2>🍽️ 飲食與生活方式建議</h2>
+            <div class="advice-tabs">
+                <button class="advice-tab active" data-tab="diet">飲食建議</button>
+                <button class="advice-tab" data-tab="lifestyle">生活方式</button>
+            </div>
+            
+            <div class="advice-content active" id="diet-content">
+                <div class="advice-item">
+                    <div class="advice-icon">🥗</div>
+                    <div class="advice-text">
+                        <h4>均衡飲食</h4>
+                        <p>每日攝取多樣化食物，包括全穀類、蛋白質、健康脂肪、蔬果等，確保營養均衡。</p>
+                    </div>
+                </div>
+                <div class="advice-item">
+                    <div class="advice-icon">🕒</div>
+                    <div class="advice-text">
+                        <h4>規律進食</h4>
+                        <p>建立規律的用餐時間表，避免過度飢餓或暴飲暴食，有助於穩定血糖和能量水平。</p>
+                    </div>
+                </div>
+                <div class="advice-item">
+                    <div class="advice-icon">💧</div>
+                    <div class="advice-text">
+                        <h4>充足水分</h4>
+                        <p>每日飲用2000-2500ml水，特別注意腎臟健康，避免含糖飲料和過量咖啡因。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="advice-content" id="lifestyle-content">
+                <div class="advice-item">
+                    <div class="advice-icon">🌙</div>
+                    <div class="advice-text">
+                        <h4>睡眠優化</h4>
+                        <p>建立固定的睡眠時間表，睡前1小時避免使用電子設備，營造安靜、舒適的睡眠環境。</p>
+                    </div>
+                </div>
+                <div class="advice-item">
+                    <div class="advice-icon">🚶</div>
+                    <div class="advice-text">
+                        <h4>適度運動</h4>
+                        <p>每週進行150分鐘中等強度有氧運動，如快走、游泳或騎自行車，提升能量代謝和免疫力。</p>
+                    </div>
+                </div>
+                <div class="advice-item">
+                    <div class="advice-icon">🧘</div>
+                    <div class="advice-text">
+                        <h4>壓力管理</h4>
+                        <p>每日安排15-30分鐘的放鬆活動，如冥想、深呼吸或輕度伸展，降低壓力荷爾蒙水平。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2><span class="username">小美</span>的專屬風險提醒</h2>
+            <div class="risk-alert">
+                <div class="risk-title">腎臟健康風險</div>
+                <div class="risk-content">由於您有腎臟輕度異常的健康紀錄，建議避免過量蛋白質攝取，並注意水分補充。某些營養補充品可能會增加腎臟負擔，請在醫生指導下使用。</div>
+            </div>
+            <div class="risk-alert">
+                <div class="risk-title">熬夜影響</div>
+                <div class="risk-content">長期熬夜可能導致免疫力下降、新陳代謝紊亂，建議調整作息，並補充有助於睡眠的營養素如褪黑激素、鎂等。</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
